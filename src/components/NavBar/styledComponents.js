@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 export const NavBarBGContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -73,4 +73,55 @@ export const LogoutButton = styled.button`
   @media screen and (min-width: 767px) {
     display: flex;
   }
+`
+
+export const PopupBGContainer = styled.div`
+  height: 100px;
+  width: 250px;
+  padding: 25px;
+  border-radius: 5px;
+  background-color: ${props =>
+    props.isDarkTheme === true ? '#000000' : '#f4f4f4'};
+`
+
+export const PopupContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const PopupButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`
+
+export const PopupCancelButton = styled.button`
+  height: 35px;
+  width: 100px;
+  color: ${props => (props.isDarkTheme === true ? '#ffffff' : 'black')};
+  background-color: transparent;
+  border-color: ${props => (props.isDarkTheme === true ? '#ffffff' : 'black')};
+  border-style: ${props => (props.isDarkTheme === true ? '#ffffff' : 'black')};
+  border-width: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+`
+
+export const PopupLogoutButton = styled.button`
+  height: 35px;
+  width: 100px;
+  background-color: #3b82f6;
+  border-radius: 5px;
+  color: #ffffff;
+  border: 0px;
+  margin-top: 10px;
+`
+
+export const PopupText = styled.p`
+  color: ${props => (props.isDarkTheme === true ? '#e2e8f0' : 'black')};
+  font-family: roboto;
+  font-size: 15px;
+  text-align: center;
 `

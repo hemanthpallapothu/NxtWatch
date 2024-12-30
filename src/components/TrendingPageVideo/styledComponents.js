@@ -31,7 +31,7 @@ export const TrendingVideoContainer = styled.div`
     width: 500px;
   }
 `
-export const TrendingVideoTitle = styled.h1`
+export const TrendingVideoTitle = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-size: 10px;
   font-family: roboto;
@@ -56,7 +56,7 @@ export const TrendingVideoViewsAndPublishedAtContainer = styled.ul`
   flex-direction: row;
   padding-left: 0px;
 `
-export const TrendingVideoViews = styled.li`
+export const TrendingVideoViews = styled.p`
   color: #64748b;
   font-size: 10px;
   font-family: roboto;
@@ -66,7 +66,7 @@ export const TrendingVideoViews = styled.li`
   }
 `
 
-export const TrendingVideoPublishedAt = styled.li`
+export const TrendingVideoPublishedAt = styled.p`
   color: #64748b;
   font-size: 10px;
   font-family: roboto;

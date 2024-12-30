@@ -8,7 +8,7 @@ export const GamingPageContainer = styled.div`
 
 export const GamingPageSideContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 92vh;
   width: 100%;
   background-size: cover;
@@ -27,7 +27,7 @@ export const GamingPageInprogressView = styled.div`
 
 export const GamingPageTitleContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 100px;
   width: 100%;
   padding-left: 20px;

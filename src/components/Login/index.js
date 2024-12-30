@@ -22,6 +22,7 @@ class Login extends Component {
     username: '',
     password: '',
     errorMsg: '',
+    isChecked: false,
   }
 
   onChangeUsername = event => {
@@ -30,6 +31,12 @@ class Login extends Component {
 
   onChangePassword = event => {
     this.setState({password: event.target.value})
+  }
+
+  onClickCheckbox = () => {
+    this.setState(prevState => ({
+      isChecked: !prevState.isChecked,
+    }))
   }
 
   onSubmitSuccess = jwtToken => {
@@ -58,7 +65,7 @@ class Login extends Component {
   }
 
   render() {
-    const {username, password, errorMsg} = this.state
+    const {username, password, errorMsg, isChecked} = this.state
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
@@ -87,8 +94,11 @@ class Login extends Component {
                     />
                   )}
                   <LabelAndInputAlinement>
-                    <InputLabel isDarkTheme={isDarkTheme}>USERNAME</InputLabel>
+                    <InputLabel htmlFor="USERNAME" isDarkTheme={isDarkTheme}>
+                      USERNAME
+                    </InputLabel>
                     <InputContainer
+                      id="USERNAME"
                       type="text"
                       placeholder="Username"
                       isDarkTheme={isDarkTheme}
@@ -97,9 +107,12 @@ class Login extends Component {
                     />
                   </LabelAndInputAlinement>
                   <LabelAndInputAlinement>
-                    <InputLabel isDarkTheme={isDarkTheme}>PASSWORD</InputLabel>
+                    <InputLabel htmlFor="PASSWORD" isDarkTheme={isDarkTheme}>
+                      PASSWORD
+                    </InputLabel>
                     <InputContainer
-                      type="password"
+                      id="PASSWORD"
+                      type={isChecked ? 'text' : 'password'}
                       placeholder="Password"
                       isDarkTheme={isDarkTheme}
                       onChange={this.onChangePassword}
@@ -107,12 +120,20 @@ class Login extends Component {
                     />
                   </LabelAndInputAlinement>
                   <ShowPasswordCheckBox>
-                    <CheckBox type="checkbox" />
-                    <ShowPasswordText isDarkTheme={isDarkTheme}>
+                    <CheckBox
+                      type="checkbox"
+                      checked={isChecked}
+                      id="Show Password"
+                      onClick={this.onClickCheckbox}
+                    />
+                    <ShowPasswordText
+                      htmlFor="Show Password"
+                      isDarkTheme={isDarkTheme}
+                    >
                       Show Password
                     </ShowPasswordText>
                   </ShowPasswordCheckBox>
-                  <LoginButton type="submit">Submit</LoginButton>
+                  <LoginButton type="submit">Login</LoginButton>
                   <ErrorMsg>{errorMsg}</ErrorMsg>
                 </LoginCardContainer>
               </MainContainer>

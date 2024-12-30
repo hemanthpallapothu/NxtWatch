@@ -21,14 +21,14 @@ export const GamingVideoThumbnil = styled.img`
   }
 `
 
-export const GamingVideoTitle = styled.h1`
+export const GamingVideoTitle = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-size: 15px;
   font-family: roboto;
   margin-bottom: 10px;
 `
 
-export const GamingVideoViewCount = styled.h1`
+export const GamingVideoViewCount = styled.p`
   color: #64748b;
   font-size: 15px;
   font-family: roboto;

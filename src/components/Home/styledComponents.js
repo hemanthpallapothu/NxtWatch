@@ -15,7 +15,7 @@ export const HomePageContainer = styled.div`
 
 export const HomePageSideContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 92vh;
   width: 100%;
   background-size: cover;
@@ -72,11 +72,11 @@ export const HomePageSearchContainer = styled.div`
 
 export const HomePageVideoSearch = styled.input`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   border-width: 1px;
   border-style: solid;
   border-color: ${props =>
-    props.isDarkTheme === true ? '#f9f9f9' : '#212121'};
+    props.isDarkTheme === true ? '#f9f9f9' : '#181818'};
   height: 35px;
   width: 300px;
   margin-top: 20px;

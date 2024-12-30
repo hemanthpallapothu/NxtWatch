@@ -70,7 +70,7 @@ class Trending extends Component {
   }
 
   onRenderInProgressView = () => (
-    <TrendingPageInprogressView>
+    <TrendingPageInprogressView data-testid="loader">
       <Loader type="ThreeDots" color="red" height="50" width="50" />
     </TrendingPageInprogressView>
   )

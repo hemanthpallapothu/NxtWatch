@@ -38,7 +38,7 @@ export const HomeVideoTextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 `
-export const HomeVideoTitle = styled.div`
+export const HomeVideoTitle = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : 'black;')};
   font-size: 15px;
   font-family: roboto;
@@ -57,13 +57,13 @@ export const HomeVideoViewsPublishedContainer = styled.ul`
   flex-direction: row;
   padding-left: 15px;
 `
-export const HomeVideoViews = styled.li`
+export const HomeVideoViews = styled.p`
   color: #475569;
   font-size: 15px;
   font-family: roboto;
   list-style-type: none;
 `
-export const HomeVideoPublished = styled.li`
+export const HomeVideoPublished = styled.p`
   color: #475569;
   font-size: 15px;
   font-family: roboto;

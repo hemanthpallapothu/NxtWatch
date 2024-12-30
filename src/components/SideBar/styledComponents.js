@@ -19,7 +19,7 @@ export const SideBarContainer = styled.div`
 
 export const SideBarBGContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   padding-top: 25px;
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
+import Popup from 'reactjs-popup'
 
 import {FaMoon} from 'react-icons/fa'
 import {IoSunnyOutline} from 'react-icons/io5'
@@ -18,6 +19,12 @@ import {
   UserIcon,
   LogoutIcon,
   LogoutButton,
+  PopupContainer,
+  PopupCancelButton,
+  PopupButtonsContainer,
+  PopupLogoutButton,
+  PopupText,
+  PopupBGContainer,
 } from './styledComponents'
 
 class NavBar extends Component {
@@ -36,20 +43,23 @@ class NavBar extends Component {
             <>
               <GlobalStyle />
               <NavBarBGContainer isDarkTheme={isDarkTheme}>
-                {isDarkTheme ? (
-                  <NavBarImg
-                    alt="Logo"
-                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-                  />
-                ) : (
-                  <NavBarImg
-                    alt="Logo"
-                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                  />
-                )}
+                <Link to="/">
+                  {isDarkTheme ? (
+                    <NavBarImg
+                      alt="website logo"
+                      src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                    />
+                  ) : (
+                    <NavBarImg
+                      alt="website logo"
+                      src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                    />
+                  )}
+                </Link>
+
                 <NavBarOptionsContainer>
                   {isDarkTheme ? (
-                    <ThemeButton>
+                    <ThemeButton data-testid="theme">
                       <IoSunnyOutline
                         onClick={toggleTheme}
                         color="#ffffff"
@@ -57,7 +67,7 @@ class NavBar extends Component {
                       />
                     </ThemeButton>
                   ) : (
-                    <ThemeButton>
+                    <ThemeButton data-testid="theme">
                       <FaMoon onClick={toggleTheme} size={25} />
                     </ThemeButton>
                   )}
@@ -74,21 +84,81 @@ class NavBar extends Component {
                     alt="profile"
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                   />
-                  <LogoutButton
-                    isDarkTheme={isDarkTheme}
-                    onClick={this.onLogout}
-                  >
-                    LogOut
-                  </LogoutButton>
-                  {isDarkTheme ? (
-                    <LogoutIcon onClick={this.onLogout}>
-                      <FiLogOut color="#ffffff" size={25} />
-                    </LogoutIcon>
-                  ) : (
-                    <LogoutIcon onClick={this.onLogout}>
-                      <FiLogOut size={25} />
-                    </LogoutIcon>
-                  )}
+
+                  <PopupContainer>
+                    <Popup
+                      modal
+                      trigger={
+                        <LogoutButton isDarkTheme={isDarkTheme}>
+                          Logout
+                        </LogoutButton>
+                      }
+                    >
+                      {close => (
+                        <PopupBGContainer isDarkTheme={isDarkTheme}>
+                          <PopupText isDarkTheme={isDarkTheme}>
+                            Are you sure, you want to logout
+                          </PopupText>
+
+                          <PopupButtonsContainer>
+                            <PopupCancelButton
+                              type="button"
+                              isDarkTheme={isDarkTheme}
+                              onClick={() => close()}
+                            >
+                              Cancel
+                            </PopupCancelButton>
+                            <PopupLogoutButton
+                              type="button"
+                              onClick={() => this.onLogout()}
+                            >
+                              Confirm
+                            </PopupLogoutButton>
+                          </PopupButtonsContainer>
+                        </PopupBGContainer>
+                      )}
+                    </Popup>
+                  </PopupContainer>
+                  <PopupContainer>
+                    <Popup
+                      modal
+                      trigger={
+                        isDarkTheme ? (
+                          <LogoutIcon>
+                            <FiLogOut color="#ffffff" size={25} />
+                          </LogoutIcon>
+                        ) : (
+                          <LogoutIcon>
+                            <FiLogOut size={25} />
+                          </LogoutIcon>
+                        )
+                      }
+                    >
+                      {close => (
+                        <PopupBGContainer isDarkTheme={isDarkTheme}>
+                          <PopupText isDarkTheme={isDarkTheme}>
+                            Are you sure, you want to logout
+                          </PopupText>
+
+                          <PopupButtonsContainer>
+                            <PopupCancelButton
+                              type="button"
+                              isDarkTheme={isDarkTheme}
+                              onClick={() => close()}
+                            >
+                              Cancel
+                            </PopupCancelButton>
+                            <PopupLogoutButton
+                              type="button"
+                              onClick={() => this.onLogout()}
+                            >
+                              Confirm
+                            </PopupLogoutButton>
+                          </PopupButtonsContainer>
+                        </PopupBGContainer>
+                      )}
+                    </Popup>
+                  </PopupContainer>
                 </NavBarOptionsContainer>
               </NavBarBGContainer>
             </>

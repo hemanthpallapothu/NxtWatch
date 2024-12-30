@@ -65,7 +65,7 @@ class Gaming extends Component {
   }
 
   onRenderInprogressView = () => (
-    <GamingPageInprogressView>
+    <GamingPageInprogressView data-testid="loader">
       <Loader type="ThreeDots" color="red" height="50" width="50" />
     </GamingPageInprogressView>
   )

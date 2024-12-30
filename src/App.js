@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
@@ -8,6 +8,7 @@ import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import Video from './components/Video'
 import SavedVideos from './components/SavedVideos'
+import NotFoundUrl from './components/NotFoundUrl'
 
 import ThemeContext from './context/ThemeContext'
 
@@ -25,7 +26,7 @@ class App extends Component {
 
   addSavedVideo = video => {
     this.setState(prevState => ({
-      savedVideosList: [!prevState.savedVideosList, video],
+      savedVideosList: [...prevState.savedVideosList, video],
     }))
   }
 
@@ -48,6 +49,8 @@ class App extends Component {
           <ProtectedRoute exact path="/gaming" component={Gaming} />
           <ProtectedRoute exact path="/videos/:id" component={Video} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route path="/not-found" component={NotFoundUrl} />
+          <Redirect to="not-found" />
         </Switch>
       </ThemeContext.Provider>
     )

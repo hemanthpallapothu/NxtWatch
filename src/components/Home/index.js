@@ -91,13 +91,16 @@ class Home extends Component {
   }
 
   onRenderBanner = () => (
-    <HomePageBannerContainer>
+    <HomePageBannerContainer data-testid="banner">
       <HomePageBannerAndButton>
         <HomePageBannerImg
-          alt="Logo"
+          alt="nxt watch logo"
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
         />
-        <HomePageBannerCloseButton onClick={this.onClickCloseBanner}>
+        <HomePageBannerCloseButton
+          onClick={this.onClickCloseBanner}
+          data-testid="close"
+        >
           <IoMdClose color="#000000" size={25} />
         </HomePageBannerCloseButton>
       </HomePageBannerAndButton>
@@ -112,7 +115,7 @@ class Home extends Component {
   onRenderFailure = () => <FailureView onGetVideos={this.onGetVideos} />
 
   onRenderInProgress = () => (
-    <HomePageInprogressView>
+    <HomePageInprogressView data-testid="loader">
       <Loader type="ThreeDots" color="red" height="50" width="50" />
     </HomePageInprogressView>
   )
@@ -162,7 +165,7 @@ class Home extends Component {
                   {showBanner && this.onRenderBanner()}
                   <HomePageSearchContainer>
                     <HomePageVideoSearch
-                      type="text"
+                      type="search"
                       isDarkTheme={isDarkTheme}
                       placeholder="Search"
                       onChange={this.onChangeSearchVideo}
@@ -170,6 +173,7 @@ class Home extends Component {
                     <HomePageVideoSearchButton
                       isDarkTheme={isDarkTheme}
                       onClick={this.onGetVideos}
+                      data-testid="searchButton"
                     >
                       <IoSearchOutline />
                     </HomePageVideoSearchButton>

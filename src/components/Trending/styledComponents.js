@@ -7,13 +7,13 @@ export const TrendingPageContainer = styled.div`
 `
 export const TrendingPageSideContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 92vh;
   width: 100%;
   background-size: cover;
   overflow: auto;
 `
-export const TrendingPageTitle = styled.h1`
+export const TrendingPageTitle = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#181818')};
   font-family: roboto;
   font-size: 25px;
@@ -22,7 +22,7 @@ export const TrendingPageTitle = styled.h1`
 
 export const TrendingPageTitleContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 100px;
   width: 100%;
   padding-left: 20px;

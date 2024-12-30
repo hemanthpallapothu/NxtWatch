@@ -46,6 +46,9 @@ class Video extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     videoDetails: {},
+    liked: false,
+    dislike: false,
+    isSaved: false,
   }
 
   componentDidMount() {
@@ -74,7 +77,7 @@ class Video extends Component {
         id: data.video_details.id,
         title: data.video_details.title,
         videoUrl: data.video_details.video_url,
-        thumbnailUrl: data.video_details.thumbnailUrl,
+        thumbnailUrl: data.video_details.thumbnail_url,
         channelName: data.video_details.channel.name,
         profileImageUrl: data.video_details.channel.profile_image_url,
         subscriberCount: data.video_details.channel.subscriber_count,
@@ -88,8 +91,22 @@ class Video extends Component {
     }
   }
 
+  onClickLikeButton = () => {
+    this.setState(prevState => ({
+      liked: !prevState.liked,
+      dislike: false,
+    }))
+  }
+
+  onClickDislikeButton = () => {
+    this.setState(prevState => ({
+      dislike: !prevState.dislike,
+      liked: false,
+    }))
+  }
+
   onRenderInProgress = () => (
-    <VideoInprogressView>
+    <VideoInprogressView data-testid="loader">
       <Loader type="ThreeDots" color="red" height="50" width="50" />
     </VideoInprogressView>
   )
@@ -97,8 +114,9 @@ class Video extends Component {
   onRenderFailure = () => <FailureView onGetVideos={this.onGetVideoDetails} />
 
   onRenderSuccess = () => {
-    const {videoDetails} = this.state
+    const {videoDetails, liked, dislike, isSaved} = this.state
     const {
+      id,
       title,
       viewCount,
       publishedAt,
@@ -107,11 +125,24 @@ class Video extends Component {
       profileImageUrl,
       subscriberCount,
       description,
+      thumbnailUrl,
     } = videoDetails
     return (
       <ThemeContext.Consumer>
         {value => {
-          const {isDarkTheme} = value
+          const {isDarkTheme, savedVideo, savedVideosList} = value
+          const onClickSaveButton = () => {
+            const filterdVideo = savedVideosList.filter(
+              eachItem => eachItem.id === id,
+            )
+            this.setState(prevState => ({
+              isSaved: !prevState.isSaved,
+            }))
+            if (filterdVideo.length === 0) {
+              savedVideo({...videoDetails})
+            }
+          }
+
           return (
             <>
               <VideoContainerSM>
@@ -138,20 +169,30 @@ class Video extends Component {
                 </VideoViewsAndPublishedAt>
 
                 <VideoButtonsContainer>
-                  <VideoButton>
-                    <AiOutlineLike size={20} /> Like
+                  <VideoButton
+                    onClick={this.onClickLikeButton}
+                    isLiked={liked === true}
+                  >
+                    <AiOutlineLike size={20} />
+                    Like
                   </VideoButton>
-                  <VideoButton>
+                  <VideoButton
+                    onClick={this.onClickDislikeButton}
+                    isLiked={dislike === true}
+                  >
                     <BiDislike size={20} /> Dislike
                   </VideoButton>
-                  <VideoButton>
-                    <MdPlaylistAdd size={20} /> Save
+                  <VideoButton
+                    onClick={onClickSaveButton}
+                    isLiked={isSaved === true}
+                  >
+                    <MdPlaylistAdd size={20} /> {isSaved ? 'Saved' : 'Save'}
                   </VideoButton>
                 </VideoButtonsContainer>
               </VideoDetailsContainer>
               <HRLine />
               <ChannelLogoNameAlinement>
-                <ChannelImg src={profileImageUrl} />
+                <ChannelImg alt="channel logo" src={profileImageUrl} />
                 <ChannelNameSubscribersContainer>
                   <ChannelName isDarkTheme={isDarkTheme}>
                     {channelName}

@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const MainContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 100vh;
   background-size: cover;
   display: flex;
@@ -63,13 +63,9 @@ export const CheckBox = styled.input`
 
 export const ShowPasswordCheckBox = styled.div`
   width: 400px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
   margin-left: 85px;
 `
-export const ShowPasswordText = styled.p`
+export const ShowPasswordText = styled.label`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#475569')};
   font-size: 15px;
   font-family: roboto;

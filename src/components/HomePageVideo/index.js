@@ -31,9 +31,12 @@ const HomePageVideo = props => {
         return (
           <HomeVideoNavLink to={`/videos/${id}`}>
             <HomeVideoContainer>
-              <HomeVideoThumbnailUrl alt="thumbnailUrl" src={thumbnailUrl} />
+              <HomeVideoThumbnailUrl alt="video thumbnail" src={thumbnailUrl} />
               <HomeVideoLogoAndTextContainer>
-                <HomeVideoChannelLogo src={profileImageUrl} />
+                <HomeVideoChannelLogo
+                  alt="channel logo"
+                  src={profileImageUrl}
+                />
                 <HomeVideoTextContainer>
                   <HomeVideoTitle isDarkTheme={isDarkTheme}>
                     {title}

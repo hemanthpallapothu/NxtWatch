@@ -8,7 +8,7 @@ export const VideosPageContainer = styled.div`
 
 export const VideosPageSideContainer = styled.div`
   background-color: ${props =>
-    props.isDarkTheme === true ? '#212121' : '#f9f9f9'};
+    props.isDarkTheme === true ? '#181818' : '#f9f9f9'};
   height: 92vh;
   width: 100%;
   background-size: cover;
@@ -47,7 +47,7 @@ export const VideoContainerMD = styled.div`
   }
 `
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#1e293b')};
   font-size: 20px;
   font-family: roboto;
@@ -62,13 +62,13 @@ export const VideoDetailsContainer = styled.ul`
   margin-top: 20px;
 `
 
-export const VideoViews = styled.li`
+export const VideoViews = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#94a3b8')};
   font-size: 13px;
   font-family: roboto;
   list-style-type: none;
 `
-export const VideoPublishedAt = styled.li`
+export const VideoPublishedAt = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#94a3b8')};
   font-size: 13px;
   font-family: roboto;
@@ -87,7 +87,12 @@ export const VideoButtonsContainer = styled.div`
 `
 
 export const VideoButton = styled.button`
-  color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#94a3b8')};
+  color: ${props => {
+    if (props.isLiked) {
+      return '#2563eb'
+    }
+    return '#64748b'
+  }};
   height: 35px;
   width: 100px;
   display: flex;
@@ -117,7 +122,7 @@ export const ChannelLogoNameAlinement = styled.div`
   align-items: center;
 `
 
-export const ChannelName = styled.h1`
+export const ChannelName = styled.p`
   color: ${props => (props.isDarkTheme === true ? '#f9f9f9' : '#1e293b')};
   font-size: 13px;
   font-family: roboto;

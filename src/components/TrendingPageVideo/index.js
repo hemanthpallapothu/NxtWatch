@@ -31,7 +31,10 @@ const TrendingPageVideo = props => {
         return (
           <TrendingVideoNavLink to={`/videos/${id}`}>
             <TrendingVideo>
-              <TrendingVideoThumbnailUrl alt={title} src={thumbnailUrl} />
+              <TrendingVideoThumbnailUrl
+                alt="video thumbnail"
+                src={thumbnailUrl}
+              />
               <TrendingVideoContainer>
                 <TrendingVideoTitle isDarkTheme={isDarkTheme}>
                   {title}
