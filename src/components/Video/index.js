@@ -132,15 +132,10 @@ class Video extends Component {
         {value => {
           const {isDarkTheme, savedVideo, savedVideosList} = value
           const onClickSaveButton = () => {
-            const filterdVideo = savedVideosList.filter(
-              eachItem => eachItem.id === id,
-            )
             this.setState(prevState => ({
               isSaved: !prevState.isSaved,
             }))
-            if (filterdVideo.length === 0) {
-              savedVideo({...videoDetails})
-            }
+            savedVideo({...videoDetails})
           }
 
           return (

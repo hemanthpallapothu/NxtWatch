@@ -17,6 +17,7 @@ import {
   NoVideosImg,
   NoVideosText,
   NoVideosParagraph,
+  SavedVideosContainer,
 } from './styledComponents'
 
 class SavedVideos extends Component {
@@ -62,14 +63,16 @@ class SavedVideos extends Component {
                       Saved Videos
                     </SavedVideoPageTitle>
                   </SavedVideoPageTitleContainer>
-                  {savedVideosList.length === 0
-                    ? this.onRenderNoVideos()
-                    : savedVideosList.map(eachItem => (
-                        <SavedVideoCard
-                          key={eachItem.id}
-                          videoDetails={eachItem}
-                        />
-                      ))}
+                  <SavedVideosContainer>
+                    {savedVideosList.length === 0
+                      ? this.onRenderNoVideos()
+                      : savedVideosList.map(eachItem => (
+                          <SavedVideoCard
+                            key={eachItem.id}
+                            videoDetails={eachItem}
+                          />
+                        ))}
+                  </SavedVideosContainer>
                 </SavedVideosPageSideContainer>
               </SavedVideosPageContainer>
             </>

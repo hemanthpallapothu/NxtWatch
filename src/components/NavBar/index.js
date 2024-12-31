@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import {Link, withRouter} from 'react-router-dom'
 import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
 
 import {FaMoon} from 'react-icons/fa'
 import {IoSunnyOutline} from 'react-icons/io5'
@@ -44,17 +45,14 @@ class NavBar extends Component {
               <GlobalStyle />
               <NavBarBGContainer isDarkTheme={isDarkTheme}>
                 <Link to="/">
-                  {isDarkTheme ? (
-                    <NavBarImg
-                      alt="website logo"
-                      src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-                    />
-                  ) : (
-                    <NavBarImg
-                      alt="website logo"
-                      src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                    />
-                  )}
+                  <NavBarImg
+                    alt="website logo"
+                    src={
+                      isDarkTheme === true
+                        ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+                        : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+                    }
+                  />
                 </Link>
 
                 <NavBarOptionsContainer>
@@ -89,7 +87,10 @@ class NavBar extends Component {
                     <Popup
                       modal
                       trigger={
-                        <LogoutButton isDarkTheme={isDarkTheme}>
+                        <LogoutButton
+                          isDarkTheme={isDarkTheme}
+                          onClick={this.onLogout}
+                        >
                           Logout
                         </LogoutButton>
                       }
@@ -123,15 +124,12 @@ class NavBar extends Component {
                     <Popup
                       modal
                       trigger={
-                        isDarkTheme ? (
-                          <LogoutIcon>
-                            <FiLogOut color="#ffffff" size={25} />
-                          </LogoutIcon>
-                        ) : (
-                          <LogoutIcon>
-                            <FiLogOut size={25} />
-                          </LogoutIcon>
-                        )
+                        <LogoutIcon onClick={this.onLogout}>
+                          <FiLogOut
+                            color={isDarkTheme === true ? '#ffffff' : '#181818'}
+                            size={25}
+                          />
+                        </LogoutIcon>
                       }
                     >
                       {close => (

@@ -73,3 +73,8 @@ export const NoVideosParagraph = styled.p`
   font-family: roboto;
   font-size: 20px;
 `
+
+export const SavedVideosContainer = styled.ul`
+  list-style-type: none;
+  padding: 0px;
+`

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
-export const SavedVideosPageContainer = styled.div`
+export const SavedVideosPageContainer = styled.li`
   display: flex;
   flex-direction: row;  
 `
