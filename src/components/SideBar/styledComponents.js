@@ -31,7 +31,7 @@ export const SideBarOptionsContainer = styled.div`
   flex-direction: column;
 `
 
-export const SideBarOption = styled.button`
+export const SideBarOption = styled.div`
   background-color: ${props => {
     if (props.isActive) {
       return props.isDarkTheme ? '#383838' : '#F1F5F9'

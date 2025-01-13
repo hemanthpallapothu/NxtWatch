@@ -82,7 +82,6 @@ class NavBar extends Component {
                     alt="profile"
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                   />
-
                   <PopupContainer>
                     <Popup
                       modal
