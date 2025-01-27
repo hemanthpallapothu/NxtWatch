@@ -173,6 +173,7 @@ class Home extends Component {
                     <HomePageVideoSearchButton
                       isDarkTheme={isDarkTheme}
                       onClick={this.onGetVideos}
+                      type="button"
                       data-testid="searchButton"
                     >
                       <IoSearchOutline />

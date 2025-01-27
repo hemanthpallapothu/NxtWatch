@@ -59,7 +59,6 @@ export const LogoutIcon = styled.button`
 `
 
 export const LogoutButton = styled.button`
-  display: none;
   height: 25px;
   width: 100px;
   margin-left: 10px;
@@ -69,6 +68,7 @@ export const LogoutButton = styled.button`
   border-style: solid;
   border-width: 1px;
   color: ${props => (props.isDarkTheme === true ? '#ffffff' : '#3b82f6')};
+
 
   @media screen and (min-width: 767px) {
     display: flex;
